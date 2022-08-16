@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface User {
   username: string;
   token: string;
@@ -68,7 +70,7 @@ const Movie = ({
   return (
     <div className="row col-6">
       <div className="col-4">
-        <img src={img} width="100%" alt={title} />
+        <Image src={img} width="100%" alt={title} />
       </div>
 
       <div className="col-8">

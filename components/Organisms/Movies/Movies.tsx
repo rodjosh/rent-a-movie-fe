@@ -53,6 +53,7 @@ const Movies = ({ user, setScreen }: MoviesProps) => {
 
       {movies.map(({ id, img, title, description }) => (
         <Movie
+          key={id}
           user={user}
           id={id}
           img={img}
