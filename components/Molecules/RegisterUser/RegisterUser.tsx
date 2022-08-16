@@ -5,6 +5,9 @@ interface RegisterUserProps {
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const onError = () => {
+  alert('Error trying to hit the API');
+};
 
 const RegisterUser = ({ setScreen }: RegisterUserProps) => {
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -31,8 +34,9 @@ const RegisterUser = ({ setScreen }: RegisterUserProps) => {
       .then((json) => {
         if (json?.created) {
           setScreen('Login');
-        }
-      });
+        } else onError();
+      })
+      .catch(onError);
   };
 
   return (

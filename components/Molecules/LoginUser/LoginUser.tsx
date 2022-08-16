@@ -11,6 +11,9 @@ interface LoginUserProps {
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const onError = () => {
+  alert('Error trying to hit the API');
+};
 
 const LoginUser = ({ setUser, setScreen }: LoginUserProps) => {
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -36,8 +39,9 @@ const LoginUser = ({ setUser, setScreen }: LoginUserProps) => {
             username: usernameRef?.current?.value ?? '',
             token: json?.access,
           });
-        }
-      });
+        } else onError();
+      })
+      .catch(onError);
   };
 
   return (

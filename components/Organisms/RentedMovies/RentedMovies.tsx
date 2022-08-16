@@ -20,6 +20,9 @@ interface RentedMoviesProps {
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const onError = () => {
+  alert('Error trying to hit the API');
+};
 
 const RentedMovies = ({ user, setScreen }: RentedMoviesProps) => {
   const [movies, setMovies] = useState<MovieType[]>([]);
@@ -34,8 +37,9 @@ const RentedMovies = ({ user, setScreen }: RentedMoviesProps) => {
       .then((json) => {
         if (json?.rents) {
           if (!movies?.length) setMovies(json.rents);
-        }
-      });
+        } else onError();
+      })
+      .catch(onError);
   });
 
   return (
