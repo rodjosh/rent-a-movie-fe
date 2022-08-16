@@ -43,7 +43,7 @@ const Movies = ({ user, setScreen }: MoviesProps) => {
   });
 
   return (
-    <div className="row">
+    <div className="row gy-5">
       <div className="row mb-5 justify-content-center">
         <button
           type="button"
@@ -53,6 +53,7 @@ const Movies = ({ user, setScreen }: MoviesProps) => {
           Ver rentados por mi
         </button>
       </div>
+
       <h1 className="mb-4">Para rentar</h1>
 
       {movies.map(({ id, img, title, description }) => (
